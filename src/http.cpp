@@ -30,6 +30,9 @@ esp_err_t oai_http_event_handler(esp_http_client_event_t *evt) {
       ESP_LOGD(LOG_TAG, "HTTP_EVENT_ON_HEADER, key=%s, value=%s",
                evt->header_key, evt->header_value);
       break;
+    case HTTP_EVENT_ON_HEADERS_COMPLETE:
+      ESP_LOGD(LOG_TAG, "HTTP_EVENT_ON_HEADERS_COMPLETE");
+      break;
     case HTTP_EVENT_ON_DATA: {
       ESP_LOGD(LOG_TAG, "HTTP_EVENT_ON_DATA, len=%d", evt->data_len);
       if (esp_http_client_is_chunked_response(evt->client)) {
